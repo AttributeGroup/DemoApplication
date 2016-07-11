@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20160711 16:43:35.459" generator="Robot 3.0 (Python 2.7.12 on win32)">
+<suite source="C:\Repositories\DemoApplication\TestSuites\SmokeTest.robot" id="s1" name="SmokeTest">
+<test id="s1-t1" name="SmokeTest - Login">
+<kw name="LoginPage.Login to Website" library="LoginPage">
+<arguments>
+<arg>${BROWSERTYPE}</arg>
+<arg>${APPLICATION_URL}</arg>
+</arguments>
+<kw name="Launch URL from Chosen Browser" library="init">
+<arguments>
+<arg>${BROWSERTYPE}</arg>
+<arg>${APPLICATION_URL}</arg>
+</arguments>
+<kw name="Open Browser" library="ExtendedSelenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>url=${APPLICATION_URL}</arg>
+<arg>browser=${BROWSERTYPE}</arg>
+</arguments>
+<msg timestamp="20160711 16:43:35.672" level="INFO">Opening browser 'Chrome' to base url 'http://demo.nopcommerce.com/'</msg>
+<status status="PASS" endtime="20160711 16:43:42.481" starttime="20160711 16:43:35.671"></status>
+</kw>
+<kw name="Maximize Browser Window" library="ExtendedSelenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20160711 16:43:43.709" starttime="20160711 16:43:42.481"></status>
+</kw>
+<status status="PASS" endtime="20160711 16:43:43.709" starttime="20160711 16:43:35.671"></status>
+</kw>
+<status status="PASS" endtime="20160711 16:43:43.709" starttime="20160711 16:43:35.670"></status>
+</kw>
+<status status="PASS" endtime="20160711 16:43:43.709" critical="yes" starttime="20160711 16:43:35.669"></status>
+</test>
+<kw type="teardown" name="Exit Browser">
+<kw name="Close Browser" library="ExtendedSelenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20160711 16:43:46.863" starttime="20160711 16:43:43.710"></status>
+</kw>
+<status status="PASS" endtime="20160711 16:43:46.864" starttime="20160711 16:43:43.710"></status>
+</kw>
+<status status="PASS" endtime="20160711 16:43:46.864" starttime="20160711 16:43:35.464"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="SmokeTest" pass="1">SmokeTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

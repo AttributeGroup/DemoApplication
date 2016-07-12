@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20160712 17:18:17.859" generator="Robot 3.0 (Python 2.7.12 on win32)">
+<suite source="C:\Repositories\DemoApplication\TestSuites\SmokeTest.robot" id="s1" name="SmokeTest">
+<kw type="setup" name="Prepare Test Context">
+<kw name="Launch Attribute CRM from Chosen Browser" library="init">
+<arguments>
+<arg>${BROWSERTYPE}</arg>
+<arg>${APPLICATION_URL}</arg>
+</arguments>
+<kw name="Open Browser" library="ExtendedSelenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>url=${APPLICATION_URL}</arg>
+<arg>browser=${BROWSERTYPE}</arg>
+</arguments>
+<msg timestamp="20160712 17:18:19.299" level="INFO">Opening browser 'Chrome' to base url 'http://localhost/sugarcrm/'</msg>
+<status status="PASS" endtime="20160712 17:18:30.049" starttime="20160712 17:18:19.298"></status>
+</kw>
+<kw name="Maximize Browser Window" library="ExtendedSelenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20160712 17:18:31.307" starttime="20160712 17:18:30.049"></status>
+</kw>
+<status status="PASS" endtime="20160712 17:18:31.307" starttime="20160712 17:18:19.297"></status>
+</kw>
+<kw name="Select a Attribute CRM User" library="SQL">
+<assign>
+<var>@{users}</var>
+</assign>
+<kw name="Read records from table" library="SQL">
+<arguments>
+<arg>users</arg>
+</arguments>
+<assign>
+<var>${user}</var>
+</assign>
+<kw name="Connect To Database Using Custom Params" library="DatabaseLibrary">
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to</doc>
+<arguments>
+<arg>pymysql</arg>
+<arg>database='${db_name}', user='${db_user}', password='${db_pass}', host='${db_host}', port=${db_port}</arg>
+</arguments>
+<status status="PASS" endtime="20160712 17:18:31.333" starttime="20160712 17:18:31.308"></status>
+</kw>
+<kw name="Query" library="DatabaseLibrary">
+<doc>Uses the input `selectStatement` to query for the values that</doc>
+<arguments>
+<arg>select * from ${table} limit 1;</arg>
+</arguments>
+<assign>
+<var>${all_items}</var>
+</assign>
+<msg timestamp="20160712 17:18:31.363" level="INFO">${all_items} = ((1, 'Admin', 'password1'),)</msg>
+<status status="PASS" endtime="20160712 17:18:31.363" starttime="20160712 17:18:31.334"></status>
+</kw>
+<kw name="Disconnect From Database" library="DatabaseLibrary">
+<doc>Disconnects from the database.</doc>
+<status status="PASS" endtime="20160712 17:18:31.363" starttime="20160712 17:18:31.363"></status>
+</kw>
+<msg timestamp="20160712 17:18:31.364" level="INFO">${user} = ((1, 'Admin', 'password1'),)</msg>
+<status status="PASS" endtime="20160712 17:18:31.364" starttime="20160712 17:18:31.307"></status>
+</kw>
+<msg timestamp="20160712 17:18:31.364" level="INFO">@{users} = [ (1, 'Admin', 'password1') ]</msg>
+<status status="PASS" endtime="20160712 17:18:31.364" starttime="20160712 17:18:31.307"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${USER}</arg>
+<arg>${users[0][1]}</arg>
+</arguments>
+<msg timestamp="20160712 17:18:31.365" level="INFO">${USER} = Admin</msg>
+<status status="PASS" endtime="20160712 17:18:31.365" starttime="20160712 17:18:31.364"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${PASS}</arg>
+<arg>${users[0][2]}</arg>
+</arguments>
+<msg timestamp="20160712 17:18:31.366" level="INFO">${PASS} = password1</msg>
+<status status="PASS" endtime="20160712 17:18:31.366" starttime="20160712 17:18:31.365"></status>
+</kw>
+<status status="PASS" endtime="20160712 17:18:31.366" starttime="20160712 17:18:19.297"></status>
+</kw>
+<test id="s1-t1" name="SmokeTest - Login">
+<kw name="LoginPage.Log Into CRM Application" library="LoginPage">
+<arguments>
+<arg>${USER}</arg>
+<arg>${PASS}</arg>
+</arguments>
+<kw name="Input Text" library="ExtendedSelenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${INPUT_LoginPage_UserName}</arg>
+<arg>${user}</arg>
+</arguments>
+<msg timestamp="20160712 17:18:31.368" level="INFO">Typing text 'Admin' into text field 'id=user_name'</msg>
+<status status="PASS" endtime="20160712 17:18:31.528" starttime="20160712 17:18:31.368"></status>
+</kw>
+<kw name="Input Password" library="ExtendedSelenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${INPUT_LoginPage_Password}</arg>
+<arg>${pass}</arg>
+</arguments>
+<msg timestamp="20160712 17:18:31.529" level="INFO">Typing password into text field 'id=user_password'</msg>
+<status status="PASS" endtime="20160712 17:18:31.640" starttime="20160712 17:18:31.528"></status>
+</kw>
+<kw name="Click Button" library="ExtendedSelenium2Library">
+<doc>Clicks a button identified by ``locator``.</doc>
+<arguments>
+<arg>${BUTTON_LoginPage_LogIn}</arg>
+</arguments>
+<msg timestamp="20160712 17:18:31.641" level="INFO">Clicking button 'id=login_button'.</msg>
+<status status="PASS" endtime="20160712 17:18:40.197" starttime="20160712 17:18:31.641"></status>
+</kw>
+<status status="PASS" endtime="20160712 17:18:40.197" starttime="20160712 17:18:31.367"></status>
+</kw>
+<status status="PASS" endtime="20160712 17:18:40.198" critical="yes" starttime="20160712 17:18:31.367"></status>
+</test>
+<kw type="teardown" name="Exit Browser">
+<kw name="Close Browser" library="ExtendedSelenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20160712 17:18:43.397" starttime="20160712 17:18:40.207"></status>
+</kw>
+<status status="PASS" endtime="20160712 17:18:43.398" starttime="20160712 17:18:40.207"></status>
+</kw>
+<status status="PASS" endtime="20160712 17:18:43.398" starttime="20160712 17:18:17.882"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="SmokeTest" pass="1">SmokeTest</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20160712 17:18:19.289" level="ERROR">Error in test library 'pymysql': Creating keyword 'Connect' failed: Keyword with same name defined multiple times.</msg>
+</errors>
+</robot>

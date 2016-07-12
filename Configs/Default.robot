@@ -2,5 +2,5 @@
 Library      ExtendedSelenium2Library
 
 *** Variables ***
-${APPLICATION_URL}    http://demo.nopcommerce.com/
+${APPLICATION_URL}    http://localhost/sugarcrm/
 ${BROWSERTYPE}        Chrome
